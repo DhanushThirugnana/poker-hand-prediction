@@ -2,6 +2,41 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn
+from utils import cast_to_float
+
+
+def tokenize(line):
+    tokens = line.split(";")
+    # tokens[1] = datetime.datetime.strptime(tokens[1], '%H:%M:%S').time()
+    for i in range(2, len(tokens)):
+        tokens[i] = cast_to_float(tokens[i])
+    return tokens
+
+
+def notContainsNull(rowAsArr):
+    for element in rowAsArr:
+        if element is None:
+            return False
+    return True
+
+
+def add_active_consumption(row):
+    global_active_power = row[2]
+    sub_metering_1 = row[6]
+    sub_metering_2 = row[7]
+    sub_metering_3 = row[8]
+
+    active_consumption = global_active_power * 1000 / 60 - sub_metering_1 - sub_metering_2 - sub_metering_3
+    row.append(active_consumption)
+
+    row.append(0)
+    return row
+
+
+def remove_negative_consumption(row):
+    if row[9] < 0:
+        return False
+    return True
 
 
 def print_plots(df):
