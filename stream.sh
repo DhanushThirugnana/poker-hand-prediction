@@ -7,13 +7,14 @@ while read line; do
         ignore_header=false
         continue
     fi
-    sleep $3;
     batch_size=$4
 	echo "$line"
     while [[ ${batch_size} -gt 1 ]]
     do
-        read line
-	    echo "$line"
+        if read line; then
+	        echo "$line"
+	    fi
 	    batch_size=`expr ${batch_size} - 1`
 	done
+	sleep $3;
 done < "$1" | nc -lk $2
