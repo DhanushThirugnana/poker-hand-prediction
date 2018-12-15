@@ -13,7 +13,7 @@ def tokenize(line):
     return tokens
 
 
-def notContainsNull(rowAsArr):
+def not_contains_null(rowAsArr):
     for element in rowAsArr:
         if element is None:
             return False
