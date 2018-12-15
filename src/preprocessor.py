@@ -6,9 +6,9 @@ from utils import cast_to_float
 
 
 def tokenize(line):
-    tokens = line.split(";")
+    tokens = line.split(",")
     # tokens[1] = datetime.datetime.strptime(tokens[1], '%H:%M:%S').time()
-    for i in range(2, len(tokens)):
+    for i in range(0, len(tokens)):
         tokens[i] = cast_to_float(tokens[i])
     return tokens
 

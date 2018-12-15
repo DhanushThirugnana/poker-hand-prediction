@@ -25,7 +25,8 @@ def get_least_quality_rdd(rdds_accuracy_tuples):
 
     return min(rdd_contribution_dict, key=rdd_contribution_dict.get)
 
-def remove_least_quality_rdd(list, rdds_accuracy_tuples):
-    rdd_idx = get_least_quality_rdd(rdds_accuracy_tuples)
-    del list[rdd_idx:rdd_idx+1]
+def remove_least_quality_rdd(list, rdds_accuracy_tuples, minimum_list_len=10):
+    if (len(list) > minimum_list_len):
+        rdd_idx = get_least_quality_rdd(rdds_accuracy_tuples)
+        del list[rdd_idx:rdd_idx+1]
     return list
