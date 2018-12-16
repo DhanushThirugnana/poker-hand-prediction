@@ -11,7 +11,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.tree import DecisionTreeClassifier
 
-from src.preprocessing import *
+from preprocessor import *
 
 warnings.filterwarnings("ignore")
 
