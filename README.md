@@ -142,7 +142,7 @@ stream.sh
 
 * Install spark in your machine and make sure spark-submit works fine. Found [this](https://isaacchanghau.github.io/post/install_spark_mac/) to be really useful resource to install spark in mac.
 * Open two terminal windows. Traverse to /src for running the driver program.
-* The driver program is src/main.py. Run the driver program in one of the terminals with the following command - spark-submit src/main.py <port_to_stream_data_from> <batch-interval_for_streaming>
-* On another terminal, run ./stream.sh <path_to_household_power_consumption.txt> <port_to_stream_data_to> <interval_for_streaming>
+* The driver program is src/main.py. Run the driver program in one of the terminals with the following command - spark-submit src/main.py <port_to_stream_data_from> <interval_for_streaming> <path_to_test_data>
+* On another terminal, run ./stream.sh <path_to_household_power_consumption.txt> <port_to_stream_data_to> <interval_for_streaming> <batch_size> <ignore_header_flag[true or false]>
 
 Note: All commands assume that the current working directory is the project root. Port number and streaming interval should be the same in both the commands
