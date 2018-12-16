@@ -13,6 +13,8 @@ from sklearn.tree import DecisionTreeClassifier
 
 from preprocessor import *
 
+# from src.preprocessor import get_preprocessed_data
+
 warnings.filterwarnings("ignore")
 
 print_msg = ["DecisionTreeClassifier: criterion=entropy",

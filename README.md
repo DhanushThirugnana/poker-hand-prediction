@@ -2,7 +2,7 @@
 ### Dataset  
 The dataset can be obtained [here](https://archive.ics.uci.edu/ml/datasets/Poker+Hand).   
 Open the [Data Folder](http://archive.ics.uci.edu/ml/machine-learning-databases/poker/), download and extract the zip file.   
-The dataset should contain a _household_power_consumption.txt_ text file.   
+  
 1. Relevant Information:  
      Each record is an example of a hand consisting of five playing  
      cards drawn from a standard deck of 52. Each card is described  
