@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import seaborn
 from utils import cast_to_float
+from pyspark.mllib.regression import LabeledPoint
 
 
 def tokenize(line):
@@ -98,3 +99,6 @@ def get_preprocessed_data(path_train, path_test):
     return train, test
 
 # get_preprocessed_data('poker-train.csv', 'poker-test.csv', 'clean-train', 'clean-test')
+
+def make_labeled_point(data):
+    return LabeledPoint(data[len(data)-1], data[0:len(data)-1])
