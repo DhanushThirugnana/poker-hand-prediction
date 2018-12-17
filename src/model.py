@@ -1,18 +1,13 @@
-import sys
+import csv
 import warnings
 
-from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, BaggingClassifier, GradientBoostingClassifier
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, BaggingClassifier
+from sklearn.metrics import accuracy_score
 from sklearn.model_selection import KFold
-from sklearn.metrics import accuracy_score, precision_recall_fscore_support
-import csv
-
-from preprocessor import *
-
-
+from sklearn.neighbors import KNeighborsClassifier
 
 warnings.filterwarnings("ignore")
-strout=""
+strout = ""
 
 print_msg = ["BaggingClassifier : n_estimators=5",
              "BaggingClassifier : n_estimators=10",
@@ -65,7 +60,6 @@ def get_classifiers():
         AdaBoostClassifier(n_estimators=50, learning_rate=0.1)
     ]
 
-
     for i in ['auto', 'ball_tree', 'kd_tree', 'brute']:
         classifiers.append(KNeighborsClassifier(n_neighbors=1, algorithm=i))
         classifiers.append(KNeighborsClassifier(n_neighbors=5, algorithm=i))
@@ -85,9 +79,10 @@ def get_classifiers():
     y = train_data[cls].values
     """
 
+
 def func(j):
-    out=[]
-    j=j.take(j.count())
+    out = []
+    j = j.take(j.count())
     for taken in j:
         out.append(taken)
     print(out)
@@ -96,13 +91,15 @@ def func(j):
         csvWriter = csv.writer(my_csv, delimiter=',')
         csvWriter.writerows(out)
 
+
 def kfolds(rdd_list):
-    #rdd=rdd_list.flatMap(lambda x:[y for y in x])
+    # rdd=rdd_list.flatMap(lambda x:[y for y in x])
     global strout
-    ll=[]
+    ll = []
     for i in rdd_list:
-         i.foreachRDD(func)
-    #Reading from the CSV File
+        i.foreachRDD(func)
+    # Reading from the CSV File
+
 
 def ensem():
     data = pd.read_csv("DSTREAM.csv", sep=",", header=None)
@@ -116,7 +113,7 @@ def ensem():
 
     X_test = testdata[:, :-1]
     y_test = testdata[:, 10]
-    #print(testdata.shape, X.shape, y.shape)
+    # print(testdata.shape, X.shape, y.shape)
     models = get_classifiers()
     print_index = 0
     kf = KFold(n_splits=9)

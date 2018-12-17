@@ -1,17 +1,12 @@
 import random
 
-# def mergeToDistributeClassesEqually(rddOld, rddNew):
-#     if rddOld is None:
-#         return rddNew
-#     # Merge the two rdd's so that we have a single rdd with all classes equally distributed.
-#     return rddOld.union(rddNew)
-
 
 def cast_to_float(data_string):
     if data_string is None or data_string == '' or data_string == '?':
         return None
     else:
         return float(data_string)
+
 
 def get_least_quality_rdd(rdds_accuracy_tuples, optimizing_fn=min):
     # Returns the index of the least quality RDD.
@@ -27,25 +22,29 @@ def get_least_quality_rdd(rdds_accuracy_tuples, optimizing_fn=min):
 
     return optimizing_fn(rdd_contribution_dict, key=rdd_contribution_dict.get)
 
+
 def remove_least_quality_rdd(rdd_list, rdds_accuracy_tuples, minimum_list_len=10, optimizing_fn=min):
-    if (len(rdd_list) > minimum_list_len):
+    if len(rdd_list) > minimum_list_len:
         rdd_idx = get_least_quality_rdd(rdds_accuracy_tuples, optimizing_fn)
-        del rdd_list[rdd_idx:rdd_idx+1]
+        del rdd_list[rdd_idx:rdd_idx + 1]
     return rdd_list
+
 
 def get_k_rdds_from_list(rdd_list, k=3):
     result = list()
-    if (len(rdd_list) > 0):
+    if len(rdd_list) > 0:
         indices = random.sample(range(0, len(rdd_list)), min(len(rdd_list), k))
         for index in indices:
             result.append(rdd_list[index])
     return result
+
 
 def merge_k_rdds(rdds):
     result_rdd = rdds[0]
     for i in range(1, len(rdds)):
         result_rdd.union(rdds[i])
     return result_rdd
+
 
 def get_merged_rdd(empty_rdd, rdd_list):
     for rdd in rdd_list:

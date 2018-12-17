@@ -1,0 +1,4 @@
+./stream.sh /Users/manvapradhan/PycharmProjects/big-data-project/data/poker-test.csv 9999 30 100 false
+
+
+spark-submit main.py 9999 30 /Users/manvapradhan/PycharmProjects/big-data-project/data/poker-train.csv

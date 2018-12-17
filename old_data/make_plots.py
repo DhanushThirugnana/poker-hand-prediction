@@ -1,4 +1,4 @@
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import pandas as pd
 
 training_data_path = '/Users/manvapradhan/PycharmProjects/big-data-project/data/poker-train.csv'
@@ -59,3 +59,11 @@ print(testing_data.shape)
 
 for i in training_data.columns:
     print(training_data[i])
+
+
+def print_plots(df):
+    for attr in list(df.columns.values):
+        df[attr].plot.hist()
+        print(plt.show())
+    seaborn.pairplot(df, hue='class')
+    print(plt.show())
