@@ -33,6 +33,7 @@ Open the [Data Folder](http://archive.ics.uci.edu/ml/machine-learning-databases/
    9) S5 Suit of card #5  
       Ordinal (1-4) representing {Hearts, Spades, Diamonds, Clubs}
    10) C5 Rank of card 5  
+   
       Numerical (1-13) representing (Ace, 2, 3, ... , Queen, King)
    11) CLASS Poker Hand  
       Ordinal (0-9)  

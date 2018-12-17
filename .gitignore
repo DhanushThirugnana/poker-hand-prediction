@@ -1,3 +1,5 @@
 .idea
 .DS_Store
 *.pyc
+/old_data/
+/Users/manvapradhan/PycharmProjects/big-data-project/old_data/make_plots.py
